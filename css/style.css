@@ -1,0 +1,110 @@
+:root {
+  --bg: #0b1020;
+  --bg-panel: #141b33;
+  --bg-panel-hover: #1c2647;
+  --border: #26325a;
+  --text: #e6ebff;
+  --text-muted: #9aa6cc;
+  --accent: #5cc8ff;
+  --accent-2: #b07cff;
+  --radius: 12px;
+  --maxw: 960px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(176, 124, 255, 0.15), transparent),
+    radial-gradient(1000px 500px at -10% 0%, rgba(92, 200, 255, 0.12), transparent),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+a { color: var(--accent); }
+
+main { padding: 2rem 0 4rem; }
+
+h2 {
+  font-size: 1.4rem;
+  margin: 0 0 1.25rem;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.tool-card {
+  display: block;
+  padding: 1.25rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+  background: var(--bg-panel-hover);
+  border-color: var(--accent);
+}
+
+.tool-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.tool-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer p { margin: 0; }

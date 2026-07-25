@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V-Device Planner — USI Tools</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="crumb"><a href="../../index.html">&larr; USI Tools</a></p>
+      <h1>V-Device Planner</h1>
+      <p class="tagline">Pick the bonuses you want; find a valid slot &amp; link layout that grants them all.</p>
+    </div>
+  </header>
+
+  <nav class="tabs wrap" id="tabs">
+    <button class="tab-btn is-active" data-tab="planner">Planner</button>
+    <button class="tab-btn" data-tab="objectives">Objectives</button>
+    <button class="tab-btn" data-tab="shards">Shard Library</button>
+    <button class="tab-btn" data-tab="data">Data</button>
+  </nav>
+
+  <main class="wrap">
+    <!-- PLANNER -->
+    <section id="tab-planner" class="tab-panel is-active">
+      <div class="planner-grid">
+        <div class="col">
+          <h2>Selected objectives</h2>
+          <div id="selected" class="selected-list"></div>
+
+          <h2>Add an objective</h2>
+          <input id="obj-search" class="search" type="search" placeholder="Filter objectives&hellip;" />
+          <label class="show-infeasible">
+            <input type="checkbox" id="show-infeasible" /> show infeasible (conflicting)
+          </label>
+          <div id="available" class="available-list"></div>
+        </div>
+
+        <div class="col">
+          <h2>Configuration</h2>
+          <div id="config"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section id="tab-objectives" class="tab-panel">
+      <h2>Objective library</h2>
+      <p class="muted">Each objective is a set of shard&nbsp;+&nbsp;color bonuses you want active together.</p>
+      <button id="new-objective" class="btn primary">+ New objective</button>
+      <div id="objective-editor"></div>
+      <div id="objective-table"></div>
+    </section>
+
+    <!-- SHARDS -->
+    <section id="tab-shards" class="tab-panel">
+      <h2>Shard library <span class="muted">(Tier 14, from the wiki)</span></h2>
+      <div id="shard-table"></div>
+    </section>
+
+    <!-- DATA -->
+    <section id="tab-data" class="tab-panel">
+      <h2>Data</h2>
+      <p class="muted">Libraries are saved in your browser. Export to back up, import to restore, or reset to the wiki defaults.</p>
+      <div class="btn-row">
+        <button id="export-btn" class="btn">Export JSON</button>
+        <button id="import-btn" class="btn">Import JSON</button>
+        <button id="reset-btn" class="btn danger">Reset to defaults</button>
+      </div>
+      <textarea id="data-io" class="data-io" spellcheck="false" placeholder="Exported JSON appears here; paste JSON and click Import to load."></textarea>
+      <p id="data-msg" class="data-msg"></p>
+    </section>
+  </main>
+
+  <script type="module" src="./ui.js"></script>
+</body>
+</html>

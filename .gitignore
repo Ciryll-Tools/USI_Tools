@@ -1,0 +1,16 @@
+# Allowlist: ignore everything, then permit only web files plus the repo docs.
+# Keeps the repository strictly HTML/CSS/JS (+ README and LICENSE).
+*
+
+# Descend into subdirectories so the rules below can match nested files.
+!*/
+
+# Permitted file types
+!*.html
+!*.css
+!*.js
+
+# Permitted individual files
+!README.md
+!LICENSE
+!.gitignore

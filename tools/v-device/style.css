@@ -1,0 +1,163 @@
+/* V-Device Planner styles. Builds on the shared site theme in ../../css/style.css */
+
+.crumb { margin: 0 0 0.5rem; font-size: 0.9rem; }
+.crumb a { color: var(--text-muted); text-decoration: none; }
+.crumb a:hover { color: var(--accent); }
+
+.muted { color: var(--text-muted); }
+
+/* Slot color swatches — used for chips, dots and slot cards */
+:root {
+  --c-red: #ff5d6c;
+  --c-orange: #ff9f45;
+  --c-green: #4fd18b;
+  --c-blue: #5cc8ff;
+  --c-pink: #ff7ad1;
+  --c-white: #e8ecff;
+}
+.dot { display: inline-block; width: 0.7em; height: 0.7em; border-radius: 50%; vertical-align: middle; margin-right: 0.3em; }
+.color-Red    { --c: var(--c-red); }
+.color-Orange { --c: var(--c-orange); }
+.color-Green  { --c: var(--c-green); }
+.color-Blue   { --c: var(--c-blue); }
+.color-Pink   { --c: var(--c-pink); }
+.color-White  { --c: var(--c-white); }
+.dot.color-Red { background: var(--c-red); }
+.dot.color-Orange { background: var(--c-orange); }
+.dot.color-Green { background: var(--c-green); }
+.dot.color-Blue { background: var(--c-blue); }
+.dot.color-Pink { background: var(--c-pink); }
+.dot.color-White { background: var(--c-white); }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.is-active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.tab-panel { display: none; padding-top: 1.5rem; }
+.tab-panel.is-active { display: block; }
+
+/* Planner layout */
+.planner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media (max-width: 800px) { .planner-grid { grid-template-columns: 1fr; } }
+.col h2 { font-size: 1.15rem; margin: 0 0 0.75rem; }
+.col h2:not(:first-child) { margin-top: 1.75rem; }
+
+/* Selected objective chips */
+.selected-list { display: flex; flex-wrap: wrap; gap: 0.5rem; min-height: 2rem; }
+.selected-list:empty::before {
+  content: "None yet — add objectives below.";
+  color: var(--text-muted); font-style: italic;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--bg-panel); border: 1px solid var(--accent);
+  border-radius: 999px; padding: 0.35rem 0.4rem 0.35rem 0.8rem;
+}
+.chip button {
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 0 0.2rem;
+}
+.chip button:hover { color: var(--c-red); }
+
+/* Available objective list */
+.search {
+  width: 100%; padding: 0.55rem 0.75rem; margin-bottom: 0.5rem;
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: 0.95rem;
+}
+.show-infeasible { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+.available-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.obj-item {
+  text-align: left; width: 100%;
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.6rem 0.8rem; color: inherit; cursor: pointer;
+}
+.obj-item:hover { border-color: var(--accent); background: var(--bg-panel-hover); }
+.obj-item .obj-name { font-weight: 600; }
+.obj-item .obj-reqs { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
+.obj-item.infeasible { opacity: 0.45; cursor: not-allowed; }
+.obj-item.infeasible:hover { border-color: var(--border); background: var(--bg-panel); }
+
+/* Configuration panel */
+.link-count { font-size: 0.95rem; margin: 0 0 1rem; }
+.link-count strong { color: var(--accent); }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.slot {
+  border: 1px solid var(--border); border-left: 4px solid var(--c, var(--border));
+  border-radius: 8px; padding: 0.6rem 0.75rem; background: var(--bg-panel);
+}
+.slot .slot-name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--c, var(--text-muted)); }
+.slot .slot-shard { font-weight: 600; margin: 0.15rem 0; }
+.slot .slot-empty { color: var(--text-muted); font-style: italic; font-weight: 400; }
+.slot .slot-gain { font-size: 0.8rem; color: var(--text-muted); }
+.slot-white { grid-column: 1 / -1; }
+
+.links-block { margin-top: 1rem; }
+.links-block h3, .bonus-block h3 { font-size: 0.95rem; margin: 0 0 0.5rem; }
+.link-pill {
+  display: inline-block; font-size: 0.85rem; background: var(--bg-panel);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 0.25rem 0.7rem; margin: 0 0.35rem 0.35rem 0;
+}
+.bonus-block { margin-top: 1.25rem; }
+.bonus-block ul { margin: 0; padding-left: 0; list-style: none; }
+.bonus-block li { padding: 0.2rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+.empty-config { color: var(--text-muted); font-style: italic; }
+
+/* Buttons */
+.btn {
+  background: var(--bg-panel); border: 1px solid var(--border); color: var(--text);
+  border-radius: 8px; padding: 0.5rem 1rem; cursor: pointer; font-size: 0.95rem;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { border-color: var(--accent); color: var(--accent); }
+.btn.danger:hover { border-color: var(--c-red); color: var(--c-red); }
+.btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+/* Tables */
+table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.9rem; }
+th { color: var(--text-muted); font-weight: 600; }
+.row-actions button { margin-right: 0.4rem; }
+.link-only-tag { font-size: 0.7rem; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 0.3rem; margin-left: 0.3rem; }
+
+/* Objective editor */
+.editor {
+  border: 1px solid var(--accent); border-radius: 10px;
+  padding: 1rem; margin: 1rem 0; background: var(--bg-panel);
+}
+.editor.hidden { display: none; }
+.editor label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.editor input[type="text"], .editor select {
+  background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  border-radius: 6px; padding: 0.4rem 0.5rem; font-size: 0.95rem;
+}
+.editor input[type="text"] { width: 100%; margin-bottom: 0.75rem; }
+.req-row { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; }
+.req-row select { flex: 1; }
+
+.data-io {
+  width: 100%; min-height: 220px; margin-top: 1rem;
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: ui-monospace, monospace;
+  font-size: 0.8rem; padding: 0.75rem; resize: vertical;
+}
+.data-msg { min-height: 1.2em; font-size: 0.9rem; }
+.data-msg.ok { color: var(--c-green); }
+.data-msg.err { color: var(--c-red); }
